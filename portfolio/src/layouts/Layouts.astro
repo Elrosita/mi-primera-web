@@ -4,6 +4,62 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+
+class Soldado {
+  constructor(nombre, edad, rango, vehiculoAsignado) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.rango = rango;
+    this.vehiculoAsignado = vehiculoAsignado;
+  }
+
+  disparar() {
+    return `El soldado ${this.nombre} esta disparando`;
+  }
+}
+
+class Sargento extends Soldado {
+  constructor(nombre, edad, vehiculoAsignado, numeroCompania, soldadosACargo) {
+    super(nombre, edad, "sargento", vehiculoAsignado);
+    this.numeroCompania = numeroCompania;
+    this.soldadosACargo = soldadosACargo;
+  }
+  darOrden() {
+    return `${this.nombre} le dio una orden a ${this.soldadosACargo.map(
+      (soldado) => {
+        return `  ${soldado.nombre}`;
+      }
+    )}`;
+  }
+}
+
+class vehiculoMilitar {
+  constructor(cantRuedas, cantSoldados, velocidadPromedio) {
+    this.cantRuedas = cantRuedas;
+    this.cantSoldados = cantSoldados;
+    this.velocidadPromedio = velocidadPromedio;
+  }
+  movilizar() {
+    return ``;
+  }
+}
+
+class Tanque extends vehiculoMilitar {
+  constructor(artillero, conductor, cantMunicion, espesorBlindaje) {
+    super(cantRuedas, velocidadPromedio);
+  }
+}
+
+let soldado1 = new Soldado("Mauro", 27, "soldado", "tanque");
+let soldado2 = new Soldado("Laura", 29, "soldado", "auto");
+let soldado3 = new Soldado("Marcos", 24, "soldado", "camion");
+
+let sargento1 = new Sargento("Fabian", 37, "camion", "f47stx", [
+  soldado1,
+  soldado2,
+  soldado3,
+]);
+// let sargento2 = new Sargento("Rodrigo", 40, "camion", "mtgsfx");
 ---
 
 <html lang="es">
@@ -17,10 +73,12 @@ import "../styles/global.css";
   <body
     class="flex flex-col h-screen w-screen bg-gradient-to-bl from to-blue-900 to-purple-600 text-white p-3"
   >
-    <Header />
+    {sargento1.darOrden()}
+    <!--  <Header />
     <div class="flex p-10">
-      <slot />
+      <slot class="w-full h-full" />
+      <script></script>
     </div>
     <Footer />
-  </body>
+   --></body>
 </html>
