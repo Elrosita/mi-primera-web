@@ -17,46 +17,10 @@ import "../styles/global.css";
   <body
     class="flex flex-col h-screen w-screen bg-gradient-to-bl from to-blue-900 to-purple-600 text-white p-10"
   >
-    <!--  <Header />
-    <div class="flex p-10">
-      <slot class="w-full h-full" />
+    <Header />
+    <div class="flex p-10 w-screen h-screen">
+      <slot />
     </div>
     <Footer />
-   -->
-    <form id="myForm" action="">
-      <input id="myImput" type="text" class="w-40 h-7 border rounded-md" />
-      <input id="myImput2" type="text" class="w-40 h-7 border rounded-md" />
-      <button id="myBtn" type="submit" class="border rounded-md">Agregar</button
-      >
-    </form>
-    <!-- Lista -->
-    <div id="container" class="border flex w-40 min-w-full min-h-full p-2">
-      <!-- Tareas card -->
-      <div
-        id="tareas"
-        class="border rounded-lg w-max h-max p-5 justify-center flex flex-col"
-      >
-        <h1>1</h1>
-        <h2>Sacar basura</h2>
-        <button
-          id="myBtn2"
-          type="submit"
-          class="border rounded-md hover: bg-blue-600">Eliminar</button
-        >
-      </div>
-    </div>
-
-    <script>
-      const myForm = document.querySelector("#myForm");
-      let tareas = [];
-      myForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let nuevaTarea = {
-          titulo: myForm.myImput.value,
-        };
-        tareas.push(nuevaTarea);
-        console.log(tareas);
-      });
-    </script>
   </body>
 </html>
